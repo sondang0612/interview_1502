@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import Maker from "@/components/Maker";
+import { MarkerPoint } from "@/types";
 import React, { useState, useRef, useEffect } from "react";
 
 interface Position {
@@ -10,12 +11,12 @@ interface Position {
 
 const tiles = ["/images/map.png"];
 
-const makers = [
-  { x: 0.5, y: 0.1 },
-  { x: 0.4, y: 0.4 },
-];
+type Props = {
+  selectedUser: MarkerPoint[];
+};
 
-const ZoomableMap: React.FC = () => {
+const ZoomableMap = (props: Props) => {
+  const { selectedUser } = props;
   const [scale, setScale] = useState<number>(1);
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -24,6 +25,8 @@ const ZoomableMap: React.FC = () => {
   const [lastDistance, setLastDistance] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [selectedMaker, setSelectedMaker] = useState<any>(null);
+  const [makers, setMakers] = useState<any>(null);
 
   const limitPosition = (
     newPosition: Position,
@@ -204,7 +207,6 @@ const ZoomableMap: React.FC = () => {
     const preventScroll = (e: WheelEvent) => {
       e.preventDefault();
     };
-
     const container = containerRef.current;
     if (container) {
       container.addEventListener("wheel", preventScroll, { passive: false });
@@ -217,15 +219,18 @@ const ZoomableMap: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    resetZoom();
+    setSelectedMaker(null);
+    const newMarkers = Array.from({ length: 3 }, () => ({
+      x: parseFloat((0.4 + Math.random() * 0.3).toFixed(2)),
+      y: parseFloat((0.4 + Math.random() * 0.3).toFixed(2)),
+    }));
+    setMakers(newMarkers);
+  }, [selectedUser]);
+
   return (
     <div className="w-full">
-      <button
-        onClick={resetZoom}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        disabled={scale <= 1}
-      >
-        Reset
-      </button>
       <div
         ref={containerRef}
         className="w-full md:h-[30rem] lg:h-[32rem] overflow-hidden border-2 border-gray-300 rounded-lg relative bg-gray-100 h-[436px]"
@@ -259,15 +264,52 @@ const ZoomableMap: React.FC = () => {
                 draggable="false"
               />
             ))}
-            {makers.map((maker, index) => (
+            {makers?.map((maker: any, index: number) => (
               <Maker
                 key={index}
                 top={`${maker.y * 100}%`}
                 left={`${maker.x * 100}%`}
                 transform={`translate(-50%, -50%) scale(${1 / scale})`}
                 transformOrigin="center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedMaker({
+                    ...selectedUser[index],
+                    x: maker.x,
+                    y: maker.y,
+                  });
+                }}
               />
             ))}
+            {selectedMaker !== null && (
+              <div
+                className="absolute bg-white shadow-lg rounded-lg p-4 w-48 sm:w-64 z-50"
+                style={{
+                  top: `${selectedMaker.y * 100}%`,
+                  left: `${selectedMaker.x * 100}%`,
+                  transform: "translate(-50%, -110%)",
+                }}
+              >
+                <h2 className="text-lg font-bold">{selectedMaker?.name}</h2>
+                <p className="text-sm text-gray-600">
+                  {selectedMaker?.address}
+                </p>
+                <a
+                  href={selectedMaker?.website}
+                  className="text-blue-500 text-sm underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit Website
+                </a>
+                <button
+                  className="mt-2 w-full bg-red-500 text-white text-sm py-1 rounded hover:bg-red-600"
+                  onClick={() => setSelectedMaker(null)}
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@
 
 import useGetPageContentByParams from "@/hooks/useTranslation";
 import ZoomableMap from "../Map";
+import React from "react";
+import { MarkerPoint } from "@/types";
 
 const images = [
   "/Adventure-tourism-icon.svg",
@@ -11,6 +13,29 @@ const images = [
 
 const Bloc2 = () => {
   const { pageContent } = useGetPageContentByParams();
+  const [selectedType, setSelectedType] = React.useState<string>(
+    pageContent?.bloc_2?.cases[0] as string
+  );
+  const [selectedUser, setSelectedUser] = React.useState<MarkerPoint[]>([]);
+
+  React.useEffect(() => {
+    switch (selectedType) {
+      case pageContent?.bloc_2?.cases[0]:
+        setSelectedUser(pageContent?.carte_point?.slice(0, 3) as any);
+        break;
+      case pageContent?.bloc_2?.cases[1]:
+        setSelectedUser(pageContent?.carte_point?.slice(3, 6) as any);
+        break;
+
+      case pageContent?.bloc_2?.cases[2]:
+        setSelectedUser(pageContent?.carte_point?.slice(6, 9) as any);
+        break;
+
+      default:
+        setSelectedUser([]);
+        break;
+    }
+  }, [pageContent?.bloc_2?.cases, pageContent?.carte_point, selectedType]);
 
   return (
     <div className="md:mt-[10rem] mt-36">
@@ -32,9 +57,12 @@ const Bloc2 = () => {
       <div className="flex flex-wrap items-center justify-center gap-5 h-[3.75rem] mt-5 md:mt-6">
         {pageContent?.bloc_2.cases?.map((item, index) => (
           <div
-            className="h-11 flex items-center px-4 rounded-full border gap-2 cursor-pointer bg-[#FAFAFA] hover:bg-[#FFEDE8]"
+            className={`h-11 flex items-center px-4 rounded-full border gap-2 cursor-pointer bg-[#FAFAFA] hover:bg-[#FFEDE8] ${
+              selectedType === item && "bg-red-300 hover:bg-red-300 "
+            }`}
             key={item}
             style={{ border: "1.5px solid rgba(242, 84, 45, 0.5)" }}
+            onClick={() => setSelectedType(item)}
           >
             <img
               src={images[index]}
@@ -46,7 +74,7 @@ const Bloc2 = () => {
         ))}
       </div>
       <div className="1.5xl:mt-6 mt-20 flex items-center justify-center">
-        <ZoomableMap />
+        <ZoomableMap selectedUser={selectedUser} />
       </div>
     </div>
   );

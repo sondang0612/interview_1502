@@ -3,17 +3,20 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 type Props = {
   iconSize?: number;
+  onClick: (value: any) => void;
 } & React.CSSProperties;
 
-const Maker = (props: Props) => {
-  const { iconSize = 32, ...styles } = props;
+const Maker = ({ iconSize = 32, onClick, ...styles }: Props) => {
   return (
-    <div
-      className="absolute z-10 transition-transform duration-300 ease-out"
-      style={styles}
-    >
-      <FaMapMarkerAlt size={iconSize} color="red" />
-    </div>
+    <>
+      <div
+        className="absolute z-10 transition-transform duration-300 ease-out cursor-pointer"
+        style={styles}
+        onClick={onClick}
+      >
+        <FaMapMarkerAlt size={iconSize} className="text-red-500" />
+      </div>
+    </>
   );
 };
 
