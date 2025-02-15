@@ -28,7 +28,7 @@ const Titre = () => {
           <img src="/arrowRight.svg" alt="Arrow Right" />
         </div>
       </div>
-      <div className="mt-4 md:mt-[35px] ml-0 md:ml-[105px] flex flex-row flex-nowrap overflow-x-auto gap-4 md:gap-[3.5rem] pb-[3.75rem]">
+      <div className="mt-4 md:mt-[35px] ml-0 md:ml-[105px] flex flex-row flex-nowrap overflow-x-auto gap-4 md:gap-[3.5rem] pb-[3.75rem] md:pr-0 pr-[350px]">
         {pageContent?.bloc_3?.cases?.map((item, index) => (
           <TitreCard
             key={index}

@@ -13,12 +13,12 @@ const GalleryGrid = () => {
   const { pageContent } = useGetPageContentByParams();
 
   return (
-    <div className="mt-[15rem] pt-8 md:pt-[60px]">
+    <div className="mt-10 md:mt-[15rem] pt-8 md:pt-[60px]">
       <div className="flex items-center md:gap-20 gap-2 justify-between md:flex-row flex-col-reverse">
-        <p className="text-base md:text-lg text-secondary opacity-80 w-[740px]">
+        <p className="text-base md:text-lg text-secondary opacity-80 md:w-[740px] md:text-start text-center">
           {pageContent?.bloc_5?.text}
         </p>
-        <p className="text-2xl md:text-[2.5rem] text-end text-secondary font-semibold">
+        <p className="text-2xl md:text-[2.5rem] text-center md:text-end text-secondary font-semibold">
           {pageContent?.bloc_5?.title}{" "}
           <span className="text-primary font-semibold">#BASIC</span>
         </p>

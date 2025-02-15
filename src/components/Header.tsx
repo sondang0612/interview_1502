@@ -10,14 +10,15 @@ const Header = () => {
   const { pageContent } = useGetPageContentByParams();
   const { deviceType } = useDeviceType();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // Trạng thái mở Drawer
+  console.log(pageContent);
 
   return (
     <div
       className="h-[4.5rem] 3xl:px-[21.25rem] px-4 w-screen flex items-center justify-between fixed inset-0 z-10"
       style={{ backgroundColor: "rgba(86, 44, 44, 0.7)" }}
     >
-      <div className="flex flex-row relative w-full">
-        <p className="font-bold text-white text-[15px] mr-[93px] cursor-pointer leading-[100%]">
+      <div className="flex flex-row">
+        <p className="font-bold text-white text-[15px] mr-[93px] cursor-pointer md:leading-normal leading-[100%]">
           LOGO SAMPLE
         </p>
         <SelectLanguage />

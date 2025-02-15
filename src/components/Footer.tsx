@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import useDeviceType from "@/hooks/useDeviceType";
 import useGetPageContentByParams from "@/hooks/useTranslation";
 import React from "react";
 
@@ -6,10 +7,11 @@ const media = ["/Facebook-icon.svg", "/instagram.svg", "/Youtube-icon.svg"];
 
 const Footer = () => {
   const { pageContent } = useGetPageContentByParams();
+  const { deviceType } = useDeviceType({ mobile: 550, desktop: 1920 });
 
   return (
     <div className="h-[18.75rem] bg-secondary 3xl:px-[21.25rem] lg:px-8 px-4">
-      <div className="flex flex-row pt-14 justify-between">
+      <div className="flex sm:flex-row pt-14 justify-between">
         <div className="flex flex-col">
           <span className="text-base md:text-lg text-white">
             {pageContent?.footer?.address?.name}
@@ -21,7 +23,7 @@ const Footer = () => {
             {pageContent?.footer?.address?.location}
           </span>
         </div>
-        <div className="flex flex-col">
+        <div className={`flex flex-col ${deviceType === "mobile" && "hidden"}`}>
           <span className="text-base md:text-lg text-white opacity-60 cursor-pointer hover:opacity-100">
             {pageContent?.footer?.links[0].name}
           </span>
@@ -32,7 +34,7 @@ const Footer = () => {
             {pageContent?.footer?.links[2].name}
           </span>
         </div>
-        <div className="flex flex-col">
+        <div className={`flex flex-col ${deviceType === "mobile" && "hidden"}`}>
           <span className="text-base md:text-lg text-white opacity-60 cursor-pointer hover:opacity-100">
             {pageContent?.footer?.links[3].name}
           </span>

@@ -255,7 +255,7 @@ const ZoomableMap: React.FC = () => {
                 key={index}
                 src={src}
                 alt={`Tile ${index + 1}`}
-                className="w-screen h-full object-cover"
+                className="w-screen h-full object-cover min-h-[500px]"
                 draggable="false"
               />
             ))}

@@ -17,7 +17,7 @@ const Service = (props: Props) => {
       <p className="text-lg md:text-2xl text-secondary font-medium mt-4 mb-2">
         {title}
       </p>
-      <p className="text-sm md:text-lg text-secondary opacity-80">
+      <p className="text-sm md:text-lg text-secondary opacity-80 text-center md:px-0 px-2">
         {description}
       </p>
     </div>

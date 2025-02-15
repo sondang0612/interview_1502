@@ -16,16 +16,13 @@ const SelectLanguage = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto absolute top-1/2 -translate-y-1/2 left-40 w-10">
+    <div className="mx-auto absolute top-1/2 -translate-y-1/2 left-[140px] md:left-40">
       <select
         id="language"
         defaultValue={params.lang}
-        className="bg-secondary text-white"
+        className="bg-secondary text-white w-20"
         onChange={handleChange}
       >
-        <option value="" disabled>
-          Choose a language
-        </option>
         <option value="fr">France</option>
         <option value="en">English</option>
       </select>

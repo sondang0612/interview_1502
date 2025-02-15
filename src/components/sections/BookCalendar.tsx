@@ -48,8 +48,12 @@ const BookCalendar = () => {
               />
             </div>
             <div className="flex flex-row items-start gap-4">
-              <p className="text-base md:text-2xl text-secondary w-[7.5rem]">
-                {pageContent?.bloc_2_2?.btn_3[0]}:
+              <p
+                className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
+                  deviceType === "mobile" && "4.5rem"
+                }`}
+              >
+                {pageContent?.bloc_2_2?.btn_3}:
               </p>
               <div className="flex-1">
                 <TextEditor />

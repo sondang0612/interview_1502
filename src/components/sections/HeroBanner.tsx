@@ -12,7 +12,10 @@ const HeroBanner = () => {
         priority
         className="object-cover"
       />
-      <div className="absolute 3xl:bottom-20 3xl:right-[9.25rem] bottom-5 right-4 z-10">
+      <div
+        className="absolute 3xl:bottom-20 3xl:right-[9.25rem] bottom-5 right-4"
+        style={{ zIndex: 1 }}
+      >
         <button className="bg-primary size-[34px] 3xl:size-14 rounded-full flex items-center justify-center hover:bg-[#CA3E1B]">
           <img
             src="Chat.svg"
