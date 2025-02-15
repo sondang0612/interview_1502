@@ -35,7 +35,7 @@ const BookCalendar = () => {
             <div className="flex flex-row items-center gap-4">
               <p
                 className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
-                  deviceType1 === "mobile" && "w-[4.5rem]"
+                  deviceType1 === "mobile" && "!w-[4.5rem]"
                 }`}
               >
                 {pageContent?.bloc_2_2?.btn_1[0]}:
@@ -48,7 +48,7 @@ const BookCalendar = () => {
             <div className="flex flex-row items-center gap-4">
               <p
                 className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
-                  deviceType1 === "mobile" && "w-[4.5rem]"
+                  deviceType1 === "mobile" && "!w-[4.5rem]"
                 }`}
               >
                 {pageContent?.bloc_2_2?.btn_2[0]}:
@@ -61,7 +61,7 @@ const BookCalendar = () => {
             <div className="flex flex-row items-start gap-4">
               <p
                 className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
-                  deviceType1 === "mobile" && "w-[4.5rem]"
+                  deviceType1 === "mobile" && "!w-[4.5rem]"
                 }`}
               >
                 {pageContent?.bloc_2_2?.btn_3}:
@@ -73,7 +73,7 @@ const BookCalendar = () => {
             <div className="flex flex-row items-start gap-4">
               <p
                 className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
-                  deviceType1 === "mobile" && "w-[4.5rem]"
+                  deviceType1 === "mobile" && "!w-[4.5rem]"
                 }`}
               >
                 {pageContent?.bloc_2_2?.btn_4[0]}:
