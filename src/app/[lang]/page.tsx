@@ -12,27 +12,93 @@ import HeroBanner from "@/components/sections/HeroBanner";
 import Titre from "@/components/sections/Titre";
 import { withPageContent } from "@/hooks/withPageContent";
 import { Fragment } from "react";
+import { motion } from "framer-motion";
+
+const fadeInVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
 
 const Page = () => {
   return (
     <Fragment>
       <Header />
       <div className="overflow-hidden">
-        <HeroBanner />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInVariant}
+        >
+          <HeroBanner />
+        </motion.div>
+
         <div className="3xl:mx-[21.25rem] lg:mx-8 mx-4">
-          <Bloc1 />
-          <Bloc2 />
-          <BookCalendar />
-          <Titre />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInVariant}
+          >
+            <Bloc1 />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInVariant}
+          >
+            <Bloc2 />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInVariant}
+          >
+            <BookCalendar />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInVariant}
+          >
+            <Titre />
+          </motion.div>
         </div>
+
         <div className="3xl:mx-[21.25rem] lg:mx-8 mx-0">
-          <Experience />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInVariant}
+          >
+            <Experience />
+          </motion.div>
         </div>
+
         <div className="3xl:px-[21.25rem] lg:px-8 px-0 bg-[#EAFCFF]">
-          <GalleryGrid />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInVariant}
+          >
+            <GalleryGrid />
+          </motion.div>
         </div>
+
         <div className="px-0 bg-[#EAFCFF]">
-          <Explore />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInVariant}
+          >
+            <Explore />
+          </motion.div>
         </div>
       </div>
       <Footer />
