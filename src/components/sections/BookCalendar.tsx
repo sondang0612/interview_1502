@@ -9,16 +9,19 @@ const BookCalendar = () => {
   const { pageContent } = useGetPageContentByParams();
 
   const { deviceType } = useDeviceType();
-
+  const { deviceType: deviceType1 } = useDeviceType({
+    desktop: 1920,
+    mobile: 500,
+  });
   return (
     <div className="mt-20 mb-[140px]">
       <div>
-        <div className="flex items-center justify-center gap-10 h-[3.75rem] px-24">
+        <div className="flex items-center justify-center gap-10 h-[3.75rem] md:px-24 px-12">
           <div
             className="h-0.5 xl:w-80 w-0"
             style={{ backgroundColor: "rgba(187, 187, 187, 1)" }}
           />
-          <h3 className="text-primary text-2xl lg:text-[2rem] xl:text-[3.25rem] font-semibold md:leading-[3.75rem] text-center leading-normal uppercase">
+          <h3 className="text-primary text-xl lg:text-[2rem] xl:text-[3.25rem] font-semibold md:leading-[3.75rem] text-center leading-normal uppercase">
             {pageContent?.bloc_2_2?.title}
           </h3>
           <div
@@ -30,7 +33,11 @@ const BookCalendar = () => {
           {deviceType === "mobile" ? <Calendar /> : <CalendarDeskTop />}
           <div className="md:mt-10 mt-6 flex gap-2 md:gap-5 flex-col">
             <div className="flex flex-row items-center gap-4">
-              <p className="text-base md:text-2xl text-secondary w-[7.5rem]">
+              <p
+                className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
+                  deviceType1 === "mobile" && "w-[4.5rem]"
+                }`}
+              >
                 {pageContent?.bloc_2_2?.btn_1[0]}:
               </p>
               <input
@@ -39,7 +46,11 @@ const BookCalendar = () => {
               />
             </div>
             <div className="flex flex-row items-center gap-4">
-              <p className="text-base md:text-2xl text-secondary w-[7.5rem]">
+              <p
+                className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
+                  deviceType1 === "mobile" && "w-[4.5rem]"
+                }`}
+              >
                 {pageContent?.bloc_2_2?.btn_2[0]}:
               </p>
               <input
@@ -50,7 +61,7 @@ const BookCalendar = () => {
             <div className="flex flex-row items-start gap-4">
               <p
                 className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
-                  deviceType === "mobile" && "4.5rem"
+                  deviceType1 === "mobile" && "w-[4.5rem]"
                 }`}
               >
                 {pageContent?.bloc_2_2?.btn_3}:
@@ -60,7 +71,11 @@ const BookCalendar = () => {
               </div>
             </div>
             <div className="flex flex-row items-start gap-4">
-              <p className="text-base md:text-2xl text-secondary w-[7.5rem]">
+              <p
+                className={`text-base md:text-2xl text-secondary w-[7.5rem] ${
+                  deviceType1 === "mobile" && "w-[4.5rem]"
+                }`}
+              >
                 {pageContent?.bloc_2_2?.btn_4[0]}:
               </p>
               <button className="flex items-center justify-center gap-0.5 flex-col sm:flex-row sm:gap-4">

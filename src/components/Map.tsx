@@ -228,7 +228,7 @@ const ZoomableMap: React.FC = () => {
       </button>
       <div
         ref={containerRef}
-        className="w-full md:h-[30rem] lg:h-[32rem] min-w-[500px] overflow-hidden border-2 border-gray-300 rounded-lg relative bg-gray-100 h-[436px]"
+        className="w-full md:h-[30rem] lg:h-[32rem] overflow-hidden border-2 border-gray-300 rounded-lg relative bg-gray-100 h-[436px]"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -255,7 +255,7 @@ const ZoomableMap: React.FC = () => {
                 key={index}
                 src={src}
                 alt={`Tile ${index + 1}`}
-                className="w-screen h-full object-cover min-h-[500px]"
+                className="md:w-screen h-full object-cover min-h-[500px]"
                 draggable="false"
               />
             ))}

@@ -23,13 +23,13 @@ const GalleryGrid = () => {
           <span className="text-primary font-semibold">#BASIC</span>
         </p>
       </div>
-      <div className="w-full h-[694px] mt-8 relative">
+      <div className="w-full h-[700px] mt-8 relative">
         <img
           src="/images/brooke-lark-lcZ9NxhOSlo-unsplash.png"
           alt="section"
           className="w-full h-full"
         />
-        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 p-4 bg-white rounded-lg  w-[calc(100vw-128px)] xl:w-[1200px] 3xl:w-[1000px]">
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 p-4 bg-white rounded-lg w-[calc(100vw-32px)]  md:w-[calc(100vw-128px)] xl:w-[1020px] 3xl:w-[1000px]">
           <img
             src="/images/brooke-lark-lcZ9NxhOSlo-unsplash-white.png"
             alt="section"
@@ -37,12 +37,14 @@ const GalleryGrid = () => {
           />
           <div className="bg-white mt-3.5">
             <div className="flex items-center justify-between">
-              <p className="text-2xl font-semibold">
+              <p className="text-sm md:text-2xl font-semibold">
                 {pageContent?.bloc_5?.reviews[0].author}
               </p>
-              <p className="text-xl">{pageContent?.bloc_5?.reviews[0].date}</p>
+              <p className="text-sm md:text-xl">
+                {pageContent?.bloc_5?.reviews[0].date}
+              </p>
             </div>
-            <p className="text-[#666666] text-lg w-2/3 mt-1">
+            <p className="text-[#666666] text-sm md:text-lg w-2/3 mt-1">
               {pageContent?.bloc_5?.reviews[0].review}
             </p>
           </div>

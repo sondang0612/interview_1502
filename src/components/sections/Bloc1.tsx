@@ -27,7 +27,7 @@ const Bloc1 = () => {
             className="h-0.5 xl:w-80 w-0"
             style={{ backgroundColor: "rgba(187, 187, 187, 1)" }}
           />
-          <h3 className="text-primary text-2xl lg:text-[2rem] xl:text-[3.25rem] font-semibold md:leading-[3.75rem] text-center leading-normal uppercase">
+          <h3 className="text-primary text-xl lg:text-[2rem] xl:text-[3.25rem] font-semibold md:leading-[3.75rem] text-center leading-normal uppercase">
             {pageContent?.bloc_1.title}
           </h3>
           <div
