@@ -223,8 +223,8 @@ const ZoomableMap = (props: Props) => {
     resetZoom();
     setSelectedMaker(null);
     const newMarkers = Array.from({ length: 3 }, () => ({
-      x: parseFloat((0.4 + Math.random() * 0.3).toFixed(2)),
-      y: parseFloat((0.4 + Math.random() * 0.3).toFixed(2)),
+      x: parseFloat((0.2 + Math.random() * 0.4).toFixed(2)),
+      y: parseFloat((0.2 + Math.random() * 0.4).toFixed(2)),
     }));
     setMakers(newMarkers);
   }, [selectedUser]);

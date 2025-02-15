@@ -4,6 +4,7 @@ import useGetPageContentByParams from "@/hooks/useTranslation";
 import ZoomableMap from "../Map";
 import React from "react";
 import { MarkerPoint } from "@/types";
+import useDeviceType from "@/hooks/useDeviceType";
 
 const images = [
   "/Adventure-tourism-icon.svg",
@@ -13,6 +14,7 @@ const images = [
 
 const Bloc2 = () => {
   const { pageContent } = useGetPageContentByParams();
+  const { deviceType } = useDeviceType({ desktop: 1920, mobile: 400 });
   const [selectedType, setSelectedType] = React.useState<string>(
     pageContent?.bloc_2?.cases[0] as string
   );
@@ -73,7 +75,11 @@ const Bloc2 = () => {
           </div>
         ))}
       </div>
-      <div className="1.5xl:mt-6 mt-20 flex items-center justify-center">
+      <div
+        className={`1.5xl:mt-6 mt-16 flex items-center justify-center ${
+          deviceType === "mobile" && "mt-32"
+        }`}
+      >
         <ZoomableMap selectedUser={selectedUser} />
       </div>
     </div>
